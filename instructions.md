@@ -1,3 +1,18 @@
+# Instructions
+Here we've placed the commands you'll need to deploy the full stack, and to get the admin credentials and access them through localhost. You can automate all of this with something similar to our basic [bootstrap script](./bootstrap.sh).
+# Cert-manager
+## Installation
+```
+kubectl create namespace cert-manager
+helm repo add jetstack https://charts.jetstack.io
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.9.1 \
+  --set installCRDs=true \
+  --set startupapicheck.timeout=5m
+```
 # ArgoCD
 ## Installation
 ```
@@ -59,26 +74,13 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm install prometheus prometheus-community/kube-prometheus-stack --set grafana.enabled=false -n prometheus
 ```
 # Jaeger
-## Cert-manager
-### Installation
+## Installation
 ```
-helm repo add jetstack https://charts.jetstack.io
-helm install \
-  cert-manager jetstack/cert-manager \
-  --namespace cert-manager \
-  --create-namespace \
-  --version v1.9.1 \
-  --set installCRDs=true \
-  --set startupapicheck.timeout=5m
-```
-## Jaeger
-### Installation
-```
-helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
 kubectl create namespace jaeger
+helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
 helm install jaeger jaegertracing/jaeger-operator --namespace jaeger --values jaeger-operator-values.yaml
 ```
-### Running locally 
+## Running locally 
 ```
 kubectl port-forward -n jaeger svc/jaeger-jaeger-operator-jaeger-query 8083:16686
 ```
