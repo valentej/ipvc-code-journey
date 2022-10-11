@@ -62,10 +62,6 @@ kubectl get secret -n grafana loki-grafana -o jsonpath="{.data.admin-password}" 
 ```
 kubectl port-forward -n grafana svc/loki-grafana 8082:80
 ```
-## Access locally (Loki querier, optional)
-```
-kubectl port-forward -n grafana svc/loki-loki-distributed-query-frontend 8090:3100
-```
 # Prometheus
 ## Installation
 ```
