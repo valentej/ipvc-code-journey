@@ -1,0 +1,8 @@
+jaeger:
+  create: true
+  spec:
+    strategy: simplest
+
+rbac:
+  create: true
+  clusterRole: true
