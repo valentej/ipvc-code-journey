@@ -18,7 +18,8 @@ helm install argocd argo/argo-cd -n argocd
 # Jenkins
 kubectl create namespace jenkins
 helm repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
-helm install jenkins jenkins/jenkins-operator -n jenkins --set jenkins.namespace=jenkins
+# helm install jenkins jenkins/jenkins-operator -n jenkins --set jenkins.namespace=jenkins
+helm install jenkins jenkins/jenkins-operator -n jenkins -f jenkins-operator-values.yml
 
 # Grafana + Loki
 kubectl create namespace grafana
