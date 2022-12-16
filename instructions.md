@@ -34,9 +34,9 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 kubectl create namespace jenkins
 helm repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
-helm install jenkins jenkins/jenkins-operator -n jenkins --set jenkins.namespace=jenkins
-[ALTERNATIVE]
-helm install jenkins jenkins/jenkins-operator -n jenkins -f jenkins-operator-values.yml
+kubectl apply -f ./jenkins-home-pv.yaml -n jenkins
+kubectl apply -f ./jenkins-home-pvc.yaml -n jenkins
+helm upgrade --install jenkins jenkins/jenkins-operator -n jenkins -f ./jenkins-operator-values.yaml
 ```
 ## Credentials
 ```

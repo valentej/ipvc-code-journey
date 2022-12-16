@@ -85,22 +85,21 @@ jenkins:
   #
   # Example:
   #
-  # basePlugins:
-  # - name: configuration-as-code
-  #   version: "1346.ve8cfa_3473c94"
-  # - name: git
-  #   version: 4.11.3
-  # - name: job-dsl
-  #   version: "1.78.1"
-  # - name: kubernetes
-  #   version: 1.31.3
-  # - name: kubernetes-credentials-provider
-  #   version: 0.20
-  # - name: workflow-aggregator
-  #   version: "2.6"
-  # - name: workflow-job
-  #   version: "1145.v7f2433caa07f"
-  basePlugins: []
+  basePlugins:
+  - name: configuration-as-code
+    version: "1414.v878271fc496f"
+  - name: git
+    version: 4.11.3
+  - name: job-dsl
+    version: "1.78.1"
+  - name: kubernetes
+    version: 1.31.3
+  - name: kubernetes-credentials-provider
+    version: "0.20"
+  - name: workflow-aggregator
+    version: "2.6"
+  - name: workflow-job
+    version: "1145.v7f2433caa07f"
 
   # plugins are plugins required by the user
   # You can define plugins here
@@ -132,11 +131,11 @@ jenkins:
   # See https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/ for details
   resources:
     limits:
-      cpu: 2
-      memory: 4Gi
+      cpu: 2000m
+      memory: 8Gi
     requests:
-      cpu: 250m
-      memory: 500Mi
+      cpu: 500m
+      memory: 2Gi
 
   # volumes used by Jenkins
   # By default, we are only using backup
